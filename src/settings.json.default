@@ -1,0 +1,13 @@
+{
+    "chromedriver_path": "/usr/bin/chromedriver",
+    "download.default_directory": "app/backups",
+    "antifarm_sleep": 8,
+    "deviation": 5,
+    "maximize_window": true,
+    "headless": false,
+    "incognito": true,
+    "auto_login": true,
+    "mute_audio": true,
+    "url": "http://pfsense.local/",
+    "backup_directory": "/mnt/backup"
+}
