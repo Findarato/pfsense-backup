@@ -93,8 +93,11 @@ def login(settings):
     global DRIVER
 
     chrome_options = Options()
+    
+    path = os.path.dirname(os.path.abspath(__file__))
+    print(f'🔧  Setting download directory to: {path}/{settings["download_directory"]}')
 
-    chrome_options.add_argument("download.default_directory="+settings['download.default_directory'])
+    chrome_options.add_argument("download.default_directory="+path+"/"+settings['download_directory'])
     set_chrome_options(chrome_options, settings)
 
     try:
@@ -154,7 +157,7 @@ def backup_config():
     extra_data.click()
     
     # sleep for a bit to let the page load, otherwise the submit button may not be clickable yet
-    time.sleep(5.5)
+    time.sleep(.5)
 
     submit_button = WebDriverWait(DRIVER, 10).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[type="submit"]'))
@@ -176,8 +179,8 @@ def main():
     login(settings)
     backup_config()
 
-    # DRIVER.close()
-    # DRIVER.quit()
+    DRIVER.close()
+    DRIVER.quit()
 
 if __name__ == '__main__':
     main()
